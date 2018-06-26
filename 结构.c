@@ -27,7 +27,23 @@ int main(int argc, char const *argv[])
 	printf("Today is %i-%i-%i.\n", today.month, today.day, today.year);
 	struct date tomorrow;
 	tomorrow = (struct date) {1, 1, 1};
-
-	struct date *pDate = &today;
+	struct date *pDate = &today;//结构变量名字便不是结构变量地址，不能像数组一样直接使用，要加&
 	return 0;
 }
+//嵌套结构
+struct time {
+	int hours;
+	int minutes;
+	int seconds;
+};
+
+struct date
+{
+	struct time month;
+	struct time day;
+};
+struct date d, *dp;
+dp = &d;
+d.month.hours//等价于
+dp->month.hours//等价于
+//结构中指针用-> ，结构变量用.
